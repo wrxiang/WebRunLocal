@@ -1,0 +1,210 @@
+2019/2/10 20:13:35  服务已启动……
+2019/2/10 20:13:55  服务器:【收到】{
+	"TYPE": "2",
+	"PATH": "Plugins\\CallExe\\CallExe.exe",
+	"PARAM": []
+}
+2019/2/10 20:13:55  服务器【返回】{"CODE":0,"MSG":null,"RETURN":{"CODE":null,"VALUES":[]}}
+2019/2/10 20:13:59  服务器:【收到】{
+	"TYPE": "2",
+	"PATH": "Plugins\\CallExe\\CallExe.exe",
+	"PARAM": []
+}
+2019/2/10 20:13:59  服务器【返回】{"CODE":0,"MSG":null,"RETURN":{"CODE":null,"VALUES":[]}}
+2019/2/10 20:14:08  服务器:【收到】{
+	"TYPE": "2",
+	"PATH": "Plugins\\CallExe\\CallExe.exe",
+	"PARAM": []
+}
+2019/2/10 20:14:08  服务器【返回】{"CODE":0,"MSG":null,"RETURN":{"CODE":null,"VALUES":[]}}
+2019/2/10 20:14:11  服务器:【收到】{
+	"TYPE": "2",
+	"PATH": "Plugins\\CallExe\\CallExe.exe",
+	"PARAM": []
+}
+2019/2/10 20:14:11  服务器【返回】{"CODE":0,"MSG":null,"RETURN":{"CODE":null,"VALUES":[]}}
+2019/2/10 20:14:18  服务器:【收到】{
+	"TYPE": "2",
+	"PATH": "Plugins\\CallExe\\CallExe.exe",
+	"PARAM": []
+}
+2019/2/10 20:14:18  服务器【返回】{"CODE":0,"MSG":null,"RETURN":{"CODE":null,"VALUES":[]}}
+2019/2/10 20:14:22  服务器:【收到】{
+	"TYPE": "2",
+	"PATH": "Plugins\\CallExe\\CallExe.exe",
+	"PARAM": []
+}
+2019/2/10 20:14:22  服务器【返回】{"CODE":0,"MSG":null,"RETURN":{"CODE":null,"VALUES":[]}}
+2019/2/10 20:14:26  服务器:【收到】{
+	"TYPE": "2",
+	"PATH": "Plugins\\CallExe\\CallExe.exe",
+	"PARAM": []
+}
+2019/2/10 20:14:26  服务器【返回】{"CODE":0,"MSG":null,"RETURN":{"CODE":null,"VALUES":[]}}
+2019/2/10 20:14:34  服务器:【收到】{
+	"TYPE": "2",
+	"PATH": "Plugins\\CallExe\\CallExe.exe",
+	"PARAM": []
+}
+2019/2/10 20:14:34  服务器【返回】{"CODE":0,"MSG":null,"RETURN":{"CODE":null,"VALUES":[]}}
+2019/2/10 20:14:39  服务器:【收到】{
+	"TYPE": "2",
+	"PATH": "Plugins\\CallExe\\CallExe.exe",
+	"PARAM": []
+}
+2019/2/10 20:14:39  服务器【返回】{"CODE":0,"MSG":null,"RETURN":{"CODE":null,"VALUES":[]}}
+2019/2/10 20:15:47  服务已停止……
+2019/2/10 20:22:55  服务已启动……
+2019/2/10 20:23:29  服务器:【收到】{
+	"TYPE": "2",
+	"PATH": "Plugins\\CallExe\\CallExe.exe",
+	"PARAM": []
+}
+2019/2/10 20:23:29  服务器【返回】{"CODE":0,"MSG":null,"RETURN":{"CODE":null,"VALUES":[]}}
+2019/2/10 20:23:34  服务器:【收到】{
+	"TYPE": "2",
+	"PATH": "Plugins\\CallExe\\CallExe.exe",
+	"PARAM": []
+}
+2019/2/10 20:23:34  服务器【返回】{"CODE":0,"MSG":null,"RETURN":{"CODE":null,"VALUES":[]}}
+2019/2/10 20:23:35  服务器:【收到】{
+	"TYPE": "2",
+	"PATH": "Plugins\\CallExe\\CallExe.exe",
+	"PARAM": []
+}
+2019/2/10 20:23:36  服务器【返回】{"CODE":0,"MSG":null,"RETURN":{"CODE":null,"VALUES":[]}}
+2019/2/10 20:23:37  服务器:【收到】{
+	"TYPE": "2",
+	"PATH": "Plugins\\CallExe\\CallExe.exe",
+	"PARAM": []
+}
+2019/2/10 20:23:37  服务器【返回】{"CODE":0,"MSG":null,"RETURN":{"CODE":null,"VALUES":[]}}
+2019/2/10 20:23:38  服务器:【收到】{
+	"TYPE": "2",
+	"PATH": "Plugins\\CallExe\\CallExe.exe",
+	"PARAM": []
+}
+2019/2/10 20:23:38  服务器【返回】{"CODE":0,"MSG":null,"RETURN":{"CODE":null,"VALUES":[]}}
+2019/2/10 20:23:39  服务器:【收到】{
+	"TYPE": "2",
+	"PATH": "Plugins\\CallExe\\CallExe.exe",
+	"PARAM": []
+}
+2019/2/10 20:23:39  服务器【返回】{"CODE":0,"MSG":null,"RETURN":{"CODE":null,"VALUES":[]}}
+2019/2/10 20:23:40  服务器:【收到】{
+	"TYPE": "2",
+	"PATH": "Plugins\\CallExe\\CallExe.exe",
+	"PARAM": []
+}
+2019/2/10 20:23:40  服务器【返回】{"CODE":0,"MSG":null,"RETURN":{"CODE":null,"VALUES":[]}}
+2019/2/10 20:23:41  服务器:【收到】{
+	"TYPE": "2",
+	"PATH": "Plugins\\CallExe\\CallExe.exe",
+	"PARAM": []
+}
+2019/2/10 20:23:41  服务器【返回】{"CODE":0,"MSG":null,"RETURN":{"CODE":null,"VALUES":[]}}
+2019/2/10 20:24:22  服务已停止……
+2019/2/10 20:25:08  服务已启动……
+2019/2/10 20:25:14  服务器:【收到】{
+	"TYPE": "2",
+	"PATH": "Plugins\\CallExe\\CallExe.exe",
+	"PARAM": []
+}
+2019/2/10 20:25:14  服务器【返回】{"CODE":0,"MSG":"","RETURN":{"CODE":null,"VALUES":[]}}
+2019/2/10 20:26:25  服务已停止……
+2019/2/10 20:29:45  服务已启动……
+2019/2/10 20:30:00  服务器:【收到】{
+	"TYPE": "2",
+	"PATH": "Plugins\\CallExe\\CallExe.exe",
+	"PARAM": []
+}
+2019/2/10 20:30:00  服务器【返回】{"CODE":0,"MSG":"","RETURN":{"CODE":"","VALUES":[]}}
+2019/2/10 20:30:25  服务器:【收到】{
+	"TYPE": "1",
+	"PATH": "Plugins\\province\\SiInterface111.DLL",
+	"METHOD": "INIT",
+	"PARAM": [{
+		"TYPE": "StringBuilder",
+		"VALUE": "",
+		"MODE": "1"
+	}],
+	"RETRUN_TYPE": "int"
+}
+2019/2/10 20:30:25  服务器【返回】{"CODE":-1,"MSG":"【第三方程序集不存在】","RETURN":{"CODE":"","VALUES":[]}}
+2019/2/10 20:30:34  服务器:【收到】{
+	"TYPE": "1",
+	"PATH": "Plugins\\province\\SiInterface.DLL",
+	"METHOD": "INIT",
+	"PARAM": [{
+		"TYPE": "StringBuilder",
+		"VALUE": "",
+		"MODE": "1"
+	}],
+	"RETRUN_TYPE": "int"
+}
+2019/2/10 20:30:34  服务器【返回】{"CODE":0,"MSG":"","RETURN":{"CODE":-1,"VALUES":["^系统错误!错误代码为: 1001.^99^"]}}
+2019/2/10 20:30:47  服务已停止……
+2019/2/10 20:57:12  服务已启动……
+2019/2/10 20:58:49  服务器:【收到】{
+	"TYPE": "2",
+	"PATH": "Plugins\\CallExe\\CallExe.exe",
+	"PARAM": [{
+		"VALUE": "1111"
+	},{
+		"VALUE": "222"
+	},{
+		"VALUE": "333"
+	}]
+}
+2019/2/10 20:58:49  服务器【返回】{"CODE":0,"MSG":"","RETURN":{"CODE":"","VALUES":[]}}
+2019/2/10 20:58:57  服务器:【收到】{
+	"TYPE": "2",
+	"PATH": "Plugins\\CallExe\\CallExe.exe",
+	"PARAM": [{
+		"VALUE": "1111"
+	},{
+		"VALUE": "222"
+	},{
+		"VALUE": "333"
+	}]
+}
+2019/2/10 20:58:57  服务器【返回】{"CODE":0,"MSG":"","RETURN":{"CODE":"","VALUES":[]}}
+2019/2/10 20:59:51  服务器:【收到】{
+	"TYPE": "2",
+	"PATH": "Plugins\\CallExe\\CallExe.exe",
+	"PARAM": [{
+		"VALUE": "1111"
+	},{
+		"VALUE": "222"
+	},{
+		"VALUE": "333"
+	}]
+}
+2019/2/10 20:59:51  服务器【返回】{"CODE":0,"MSG":"","RETURN":{"CODE":"","VALUES":[]}}
+2019/2/10 21:00:09  服务已停止……
+2019/2/10 21:00:51  服务已启动……
+2019/2/10 21:01:03  服务器:【收到】{
+	"TYPE": "2",
+	"PATH": "Plugins\\CallExe\\CallExe.exe",
+	"PARAM": [{
+		"VALUE": "1111"
+	},{
+		"VALUE": "222"
+	},{
+		"VALUE": "333"
+	}]
+}
+2019/2/10 21:01:03  服务器【返回】{"CODE":0,"MSG":"","RETURN":{"CODE":"","VALUES":[]}}
+2019/2/10 21:01:07  服务器:【收到】{
+	"TYPE": "2",
+	"PATH": "Plugins\\CallExe\\CallExe.exe",
+	"PARAM": [{
+		"VALUE": "1111"
+	},{
+		"VALUE": "222"
+	},{
+		"VALUE": "333"
+	}]
+}
+2019/2/10 21:01:07  服务器【返回】{"CODE":0,"MSG":"","RETURN":{"CODE":"","VALUES":[]}}
+2019/2/10 21:01:52  服务已停止……

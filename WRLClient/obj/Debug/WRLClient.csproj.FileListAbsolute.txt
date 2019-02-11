@@ -1,0 +1,10 @@
+E:\MySpace\GitHub\WebRunLocal\WRLClient\bin\Debug\WRLClient.exe
+E:\MySpace\GitHub\WebRunLocal\WRLClient\bin\Debug\WRLClient.pdb
+E:\MySpace\GitHub\WebRunLocal\WRLClient\obj\Debug\WRLClient.csprojResolveAssemblyReference.cache
+E:\MySpace\GitHub\WebRunLocal\WRLClient\obj\Debug\WRLClient.Form1.resources
+E:\MySpace\GitHub\WebRunLocal\WRLClient\obj\Debug\WRLClient.Properties.Resources.resources
+E:\MySpace\GitHub\WebRunLocal\WRLClient\obj\Debug\WRLClient.csproj.GenerateResource.Cache
+E:\MySpace\GitHub\WebRunLocal\WRLClient\obj\Debug\WRLClient.exe
+E:\MySpace\GitHub\WebRunLocal\WRLClient\obj\Debug\WRLClient.pdb
+E:\MySpace\GitHub\WebRunLocal\WRLClient\bin\Debug\WRL.exe
+E:\MySpace\GitHub\WebRunLocal\WRLClient\bin\Debug\WRL.pdb
