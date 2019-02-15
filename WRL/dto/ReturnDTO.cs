@@ -11,12 +11,12 @@ namespace WRL.dto
     {
         //本地程序返回标志
         [DataMember]
-        private object CODE = string.Empty;
+        private object RESULT = string.Empty;
 
-        public object code
+        public object result
         {
-            get { return CODE; }
-            set { CODE = value; }
+            get { return RESULT; }
+            set { RESULT = value; }
         }
 
         //本地程序返回结果值

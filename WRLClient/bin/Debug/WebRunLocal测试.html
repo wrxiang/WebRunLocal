@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>WebRunLocal测试</title>
+</head>
+<body>
+    <textarea rows="18" cols="60" id="text"></textarea>
+    <button onclick="send()">发送消息</button>
+    <hr/>
+    <div id="message"></div>
+</body>
+
+<script type="text/javascript">
+    //发送消息
+    function send() {
+        var message = document.getElementById('text').value;
+        var ajax = new XMLHttpRequest();
+        ajax.open('post', 'http://localhost:9090/WebRunLocal/');
+        // 注册事件
+        ajax.onreadystatechange = function () {
+            if (ajax.readyState == 4 && ajax.status == 200) {
+                document.getElementById("message").innerHTML += ajax.responseText + "<br/>"
+            }
+        }
+        // 发送
+        // post请求 发送的数据 写在 send方法中
+        ajax.send(message);
+    }
+</script>
+</html>

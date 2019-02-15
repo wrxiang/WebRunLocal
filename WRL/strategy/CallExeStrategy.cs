@@ -23,7 +23,7 @@ namespace WRL.strategy
                 return;
             }
 
-            string args = string.Empty;
+            string args = " ";
             for (int i = 0; i < inputDTO.param.Count; i++ )
             {
                 args += inputDTO.param[i].value + " ";

@@ -36,7 +36,7 @@
             // 
             // uninstallService
             // 
-            this.uninstallService.Location = new System.Drawing.Point(430, 34);
+            this.uninstallService.Location = new System.Drawing.Point(433, 31);
             this.uninstallService.Name = "uninstallService";
             this.uninstallService.Size = new System.Drawing.Size(105, 49);
             this.uninstallService.TabIndex = 19;
@@ -46,7 +46,7 @@
             // 
             // stopService
             // 
-            this.stopService.Location = new System.Drawing.Point(298, 34);
+            this.stopService.Location = new System.Drawing.Point(301, 31);
             this.stopService.Name = "stopService";
             this.stopService.Size = new System.Drawing.Size(103, 49);
             this.stopService.TabIndex = 18;
@@ -56,7 +56,7 @@
             // 
             // startService
             // 
-            this.startService.Location = new System.Drawing.Point(162, 34);
+            this.startService.Location = new System.Drawing.Point(165, 31);
             this.startService.Name = "startService";
             this.startService.Size = new System.Drawing.Size(100, 49);
             this.startService.TabIndex = 17;
@@ -66,7 +66,7 @@
             // 
             // installService
             // 
-            this.installService.Location = new System.Drawing.Point(21, 34);
+            this.installService.Location = new System.Drawing.Point(24, 31);
             this.installService.Name = "installService";
             this.installService.Size = new System.Drawing.Size(104, 49);
             this.installService.TabIndex = 16;
@@ -78,7 +78,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(567, 125);
+            this.ClientSize = new System.Drawing.Size(565, 121);
             this.Controls.Add(this.uninstallService);
             this.Controls.Add(this.stopService);
             this.Controls.Add(this.startService);

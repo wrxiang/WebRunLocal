@@ -119,7 +119,6 @@ namespace WRL
                         Directory.SetCurrentDirectory(serviceInstallPath);
                     }
 
-
                     outputStreamToClient(httpListenerContext, outputDTO);
                 }));
                 threadsub.Start(context);
@@ -148,22 +147,29 @@ namespace WRL
         /// <param name="outputDTO"></param>
         private void outputStreamToClient(HttpListenerContext httpListenerContext, OutputDTO outputDTO)
         {
-            string rtnMsg = JsonHelper.Serialize<OutputDTO>(outputDTO);
-            if (pramaterLoggerPrint)
-            {
-                LoggerManager.writeLog(serviceLogFilePath, "服务器【返回】" + rtnMsg);
-            }
 
-            httpListenerContext.Response.StatusCode = 200;
-            httpListenerContext.Response.Headers.Add("Access-Control-Allow-Origin", "*");
-            httpListenerContext.Response.ContentType = "application/json";
-            httpListenerContext.Response.ContentEncoding = Encoding.UTF8;
-            byte[] buffer = System.Text.Encoding.UTF8.GetBytes(rtnMsg);
-            httpListenerContext.Response.ContentLength64 = buffer.Length;
-            var output = httpListenerContext.Response.OutputStream;
-            output.Write(buffer, 0, buffer.Length);
-            output.Close();
-            
+            try
+            {
+                string rtnMsg = JsonHelper.Serialize<OutputDTO>(outputDTO);
+                if (pramaterLoggerPrint)
+                {
+                    LoggerManager.writeLog(serviceLogFilePath, "服务器【返回】" + rtnMsg);
+                }
+
+                httpListenerContext.Response.StatusCode = 200;
+                httpListenerContext.Response.Headers.Add("Access-Control-Allow-Origin", "*");
+                httpListenerContext.Response.ContentType = "application/json";
+                httpListenerContext.Response.ContentEncoding = Encoding.UTF8;
+                byte[] buffer = System.Text.Encoding.UTF8.GetBytes(rtnMsg);
+                httpListenerContext.Response.ContentLength64 = buffer.Length;
+                var output = httpListenerContext.Response.OutputStream;
+                output.Write(buffer, 0, buffer.Length);
+                output.Close();
+            }
+            catch (Exception e) 
+            {
+                LoggerManager.writeLog(serviceLogFilePath, "【生成出参失败】,异常：" + e.ToString());
+            }
         }
 
         /// <summary>

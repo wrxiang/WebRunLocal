@@ -51,7 +51,7 @@ namespace WRL.strategy
                 }
             }
             outputDTO.code = ResultCode.Success;
-            outputDTO.returns.code = result;
+            outputDTO.returns.result = result;
         }
     }
 }
