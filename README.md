@@ -62,9 +62,12 @@ WebRunLocal测试.html：测试用网页
 #### 5.4 调用DLL插件
 WebRunLocal服务调用DLL采用了C#的动态编译功能，使用者不需要对本地程序进行二次封装，直接将本地程序放入Plugins目录即可使用，使用者根据DLL插件对外提供的方法设置不同的入参参数。测试用DLL插件CallDLL.dll模拟了经常使用的DLL封装方法的况用以测试，DLL插件接口方法定义如下：
 ```
-extern "C" __declspec(dllexport) int add(int a,int b);//返回a+b的结果
-extern "C" __declspec(dllexport) int CallString(char* output);//方法返回值为1，output为输出参数
-extern "C" __declspec(dllexport) int CallStringInAndOut(char* input, char* output);//方法返回值为1，input为输入参数，output为输出参数
+//返回a+b的结果
+extern "C" __declspec(dllexport) int add(int a,int b);
+//方法返回值为1，output为输出参数
+extern "C" __declspec(dllexport) int CallString(char* output);
+//方法返回值为1，input为输入参数，output为输出参数
+extern "C" __declspec(dllexport) int CallStringInAndOut(char* input, char* output);
 ```
 在浏览器中打开"WebRunLocal测试.html"，在文本框中分别输入以下内容，点击“发送消息”按钮，完成对测试用插件CallDLL.dll的调用测试。
 1. add方法测试入参：{"TYPE": "1","PATH": "Plugins\\CallDLL\\CallDLL.dll","METHOD": "add","PARAM": [{"TYPE": "int","VALUE": "1","MODE": "0"},{"TYPE": "int","VALUE": "2","MODE": "0"}],"RETRUN_TYPE": "int"}，出参：{"CODE": 0,"MSG": "","RETURN": {"RESULT": 3,"VALUES": []}}
