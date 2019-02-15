@@ -39,7 +39,7 @@ WebRunLocal测试.html：测试用网页
   "PARAM": [{
     "TYPE": "入参类型，调用DLL时使用",
 	"VALUE": "入参值",
-	"MODE": "入参传递方式，调用DLL时使用"
+	"MODE": "入参传递方式，调用DLL时使用，0:值传递，1:返回传递，该参数会返回结果"
   }],
   "RETRUN_TYPE": "返回值类型，调用DLL时使用"
 }
@@ -64,21 +64,82 @@ WebRunLocal服务调用DLL采用了C#的动态编译功能，使用者不需要�
 ```
 //返回a+b的结果
 extern "C" __declspec(dllexport) int add(int a,int b);
+
 //方法返回值为1，output为输出参数
 extern "C" __declspec(dllexport) int CallString(char* output);
+
 //方法返回值为1，input为输入参数，output为输出参数
 extern "C" __declspec(dllexport) int CallStringInAndOut(char* input, char* output);
 ```
 在浏览器中打开"WebRunLocal测试.html"，在文本框中分别输入以下内容，点击“发送消息”按钮，完成对测试用插件CallDLL.dll的调用测试。
-1. add方法测试入参：{"TYPE": "1","PATH": "Plugins\\CallDLL\\CallDLL.dll","METHOD": "add","PARAM": [{"TYPE": "int","VALUE": "1","MODE": "0"},{"TYPE": "int","VALUE": "2","MODE": "0"}],"RETRUN_TYPE": "int"}，出参：{"CODE": 0,"MSG": "","RETURN": {"RESULT": 3,"VALUES": []}}
-2. CallString方法测试入参：{"TYPE": "1","PATH": "Plugins\\CallDLL\\CallDLL.dll","METHOD": "CallString","PARAM": [{"TYPE": "StringBuilder","VALUE": "","MODE": "1"}],"RETRUN_TYPE": "int"}，出参：{"CODE": 0,"MSG": "","RETURN": {"RESULT": 1,"VALUES": ["HelloWorld!"]}}
-3. CallStringInAndOut方法测试入参：{"TYPE": "1","PATH": "Plugins\\CallDLL\\CallDLL.dll","METHOD": "CallStringInAndOut","PARAM": [{"TYPE": "StringBuilder","VALUE": "HelloWorld","MODE": "0"},{"TYPE": "StringBuilder","VALUE": "","MODE": "1"}],"RETRUN_TYPE": "int"}，出参：{"CODE": 0,"MSG": "","RETURN": {"RESULT": 1,"VALUES": ["HelloWorld123456"]}}
+1、 add方法测试入参及出参：
+
+```
+{
+	"TYPE": "1",
+	"PATH": "Plugins\\CallDLL\\CallDLL.dll",
+	"METHOD": "add",
+	"PARAM": [{
+		"TYPE": "int",
+		"VALUE": "1",
+		"MODE": "0"
+	}, {
+		"TYPE": "int",
+		"VALUE": "2",
+		"MODE": "0"
+	}],
+	"RETRUN_TYPE": "int"
+}
+
+{"CODE": 0,"MSG": "","RETURN": {"RESULT": 3,"VALUES": []}}
+
+```
+
+2、 CallString方法测试入参及出参：
+
+```
+{
+	"TYPE": "1",
+	"PATH": "Plugins\\CallDLL\\CallDLL.dll",
+	"METHOD": "CallString",
+	"PARAM": [{
+		"TYPE": "StringBuilder",
+		"VALUE": "",
+		"MODE": "1"
+	}],
+	"RETRUN_TYPE": "int"
+}
+
+{"CODE": 0,"MSG": "","RETURN": {"RESULT": 1,"VALUES": ["HelloWorld!"]}}
+
+```
+3、 CallStringInAndOut方法测试入参及出参：
+
+```
+{
+	"TYPE": "1",
+	"PATH": "Plugins\\CallDLL\\CallDLL.dll",
+	"METHOD": "CallStringInAndOut",
+	"PARAM": [{
+		"TYPE": "StringBuilder",
+		"VALUE": "HelloWorld",
+		"MODE": "0"
+	}, {
+		"TYPE": "StringBuilder",
+		"VALUE": "",
+		"MODE": "1"
+	}],
+	"RETRUN_TYPE": "int"
+}
+
+{"CODE": 0,"MSG": "","RETURN": {"RESULT": 1,"VALUES": ["HelloWorld123456"]}}
+```
 
 通过对测试用DLL插件三个方法的调用测试，可以学习根据DLL提供的方法设置合适的入参参数然后进行插件的调用，使用这种方式可以避免对本地程序进行二次封装使用，方便高效。
 
 #### 5.5 配置说明
 软件包根目录下的WRL.exe.config为WebRunLocal服务的配置文件，通过它可以对本地系统服务进行一些配置，配置内容如下：
-ListenerPort：设置http监听端口
+ListenerPort：设置http监听端口<br/>
 PramaterLoggerPrint：是否将系统服务的入参出参输出到日志文件
 
 
