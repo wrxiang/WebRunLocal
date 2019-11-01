@@ -141,9 +141,9 @@ extern "C" __declspec(dllexport) int CallStringInAndOut(char* input, char* outpu
 #### 5.5 配置说明
 软件包根目录下的WRL.exe.config为WebRunLocal服务的配置文件，通过它可以对本地系统服务进行一些配置，配置内容如下：
 ListenerPort：设置http监听端口<br/>
-AutoStart：程序是否开机自启动
-DesktopLnk：是否创建桌面快捷方式
-QuickLnkName：桌面快捷方式名称
+AutoStart：程序是否开机自启动<br/>
+DesktopLnk：是否创建桌面快捷方式<br/>
+QuickLnkName：桌面快捷方式名称<br/>
 PramaterLoggerPrint：是否将系统服务的入参出参输出到日志文件
 
 
