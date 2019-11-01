@@ -22,12 +22,12 @@ WebRunLocal旨在实现网页(Web Page)和本地程序(Local App)之间的动态
 
 ### 5. 程序安装及使用说明
 解压软件包至实际磁盘，双击运行WRLClient.exe，然后分别单击界面上的“安装服务”，“启动服务”两个按钮，完成WebRunLocal本地系统服务的安装及启动，服务已设置为开机自启动，保证随时在线可用。
+解压软件包至实际磁盘，双击运行WRL.exe，在托盘程序中可以看到运行的插件管理程序，程序默认已设置为开机自启动，保证随时在线可用。
 #### 5.1 目录说明
 Log：日志目录
 Plugins：本地程序目录
 WRL.exe：windows 服务程序
-WRL.exe.config：windows 服务程序配置文件
-WRLClient.exe：windows服务管理程序
+WRL.exe.config：程序配置文件
 WebRunLocal测试.html：测试用网页
 #### 5.2 参数说明
 网页中http请求参数格式如下：
@@ -56,7 +56,9 @@ WebRunLocal测试.html：测试用网页
 }
 ```
 #### 5.3 调用Exe可执行程序
-在浏览器中打开"WebRunLocal测试.html"进行测试，在文本框中输入如下内容，点击“发送消息”按钮，完成对测试用程序CallExe.exe的启动测试，软件启动成功会在主界面打印出入参。
+在浏览器中打开"WebRunLocal测试.html"进行测试，在文本框中输入如下内容
+{"TYPE": "2","PATH": "Plugins\\CallExe\\CallExe.exe"}
+点击“发送消息”按钮，完成对测试用程序CallExe.exe的启动测试，软件启动成功会在主界面打印出入参。
 {"TYPE": "2","PATH": "Plugins\\CallExe\\CallExe.exe","PARAM": [{"VALUE": "1111"},{"VALUE": "222"},{"VALUE": "333"}]}
 
 #### 5.4 调用DLL插件
@@ -140,6 +142,9 @@ extern "C" __declspec(dllexport) int CallStringInAndOut(char* input, char* outpu
 #### 5.5 配置说明
 软件包根目录下的WRL.exe.config为WebRunLocal服务的配置文件，通过它可以对本地系统服务进行一些配置，配置内容如下：
 ListenerPort：设置http监听端口<br/>
+AutoStart：程序是否开机自启动
+DesktopLnk：是否创建桌面快捷方式
+QuickLnkName：桌面快捷方式名称
 PramaterLoggerPrint：是否将系统服务的入参出参输出到日志文件
 
 

@@ -1,7 +1,0 @@
-E:\MySpace\GitHub\WebRunLocal\WRL\bin\Debug\WRL.exe.config
-E:\MySpace\GitHub\WebRunLocal\WRL\bin\Debug\WRL.exe
-E:\MySpace\GitHub\WebRunLocal\WRL\bin\Debug\WRL.pdb
-E:\MySpace\GitHub\WebRunLocal\WRL\obj\Debug\WRL.ProjectInstaller.resources
-E:\MySpace\GitHub\WebRunLocal\WRL\obj\Debug\WRL.csproj.GenerateResource.Cache
-E:\MySpace\GitHub\WebRunLocal\WRL\obj\Debug\WRL.exe
-E:\MySpace\GitHub\WebRunLocal\WRL\obj\Debug\WRL.pdb
