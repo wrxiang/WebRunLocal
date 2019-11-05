@@ -55,7 +55,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AutoStartByLnk.cs" />
+    <Compile Include="utils\LnkUtil.cs" />
+    <Compile Include="AutoStartByRegistry.cs" />
     <Compile Include="strategy\CallDLLStrategy.cs" />
     <Compile Include="strategy\IQuoteStrategy.cs" />
     <Compile Include="strategy\QuoteContext.cs" />
@@ -89,7 +90,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="App.config" />
-    <None Include="app.manifest" />
+    <None Include="app.manifest">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

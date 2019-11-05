@@ -9,72 +9,8 @@ using System.Text;
 
 namespace WebRunLocal
 {
-    class AutoStartByLnk
+    class LnkUtil
     {
-        /// <summary>
-        /// 快捷方式名称
-        /// </summary>
-        private string quickName { get { return ConfigurationManager.AppSettings["QuickLnkName"].ToString(); } }
-
-        /// <summary>
-        /// 自动获取系统自动启动目录
-        /// </summary>
-        private string systemStartPath { get { return Environment.GetFolderPath(Environment.SpecialFolder.Startup); } }
-
-        /// <summary>
-        /// 自动获取程序完整路径
-        /// </summary>
-        private string appAllPath { get { return Process.GetCurrentProcess().MainModule.FileName; } }
-
-        /// <summary>
-        /// 自动获取桌面目录
-        /// </summary>
-        private string desktopPath { get { return Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory); } }
-
-
-        /// <summary>
-        /// 设置开机自动启动-只需要调用改方法就可以了参数里面的bool变量是控制开机启动的开关的，默认为开启自启启动
-        /// </summary>
-        /// <param name="onOff">自启开关</param>
-        public void setMeAutoStart(bool onOff = true)
-        {
-            if (onOff)//开机启动
-            {
-                //获取启动路径应用程序快捷方式的路径集合
-                List<string> shortcutPaths = getQuickFromFolder(systemStartPath, appAllPath);
-                //存在2个以快捷方式则保留一个快捷方式-避免重复多于
-                if (shortcutPaths.Count >= 2)
-                {
-                    for (int i = 1; i < shortcutPaths.Count; i++)
-                    {
-                        deleteFile(shortcutPaths[i]);
-                    }
-                }
-                else if (shortcutPaths.Count < 1)//不存在则创建快捷方式
-                {
-                    createShortcut(systemStartPath, quickName, appAllPath);
-                }
-            }
-            else//开机不启动
-            {
-                //获取启动路径应用程序快捷方式的路径集合
-                List<string> shortcutPaths = getQuickFromFolder(systemStartPath, appAllPath);
-                //存在快捷方式则遍历全部删除
-                if (shortcutPaths.Count > 0)
-                {
-                    for (int i = 0; i < shortcutPaths.Count; i++)
-                    {
-                        deleteFile(shortcutPaths[i]);
-                    }
-                }
-            }
-            //创建桌面快捷方式
-            if (bool.Parse(ConfigurationManager.AppSettings["DesktopLnk"].ToString()))
-            {
-                createDesktopQuick(desktopPath, quickName, appAllPath);
-            }
-        }
-
 
         /// <summary>
         ///  向目标路径创建指定文件的快捷方式
@@ -85,7 +21,7 @@ namespace WebRunLocal
         /// <param name="description">描述</param>
         /// <param name="iconLocation">图标地址</param>
         /// <returns>成功或失败</returns>
-        private bool createShortcut(string directory, string shortcutName, string targetPath, string description = null, string iconLocation = null)
+        private static bool createShortcut(string directory, string shortcutName, string targetPath, string iconLocation = null, string description = null)
         {
             try
             {
@@ -116,7 +52,7 @@ namespace WebRunLocal
         /// <param name="directory">文件夹</param>
         /// <param name="targetPath">目标应用程序路径</param>
         /// <returns>目标应用程序的快捷方式</returns>
-        private List<string> getQuickFromFolder(string directory, string targetPath)
+        private static List<string> getQuickFromFolder(string directory, string targetPath)
         {
             List<string> tempStrs = new List<string>();
             tempStrs.Clear();
@@ -143,7 +79,7 @@ namespace WebRunLocal
         /// </summary>
         /// <param name="shortcutPath"></param>
         /// <returns></returns>
-        private string getAppPathFromQuick(string shortcutPath)
+        private static string getAppPathFromQuick(string shortcutPath)
         {
             //快捷方式文件的路径 = @"d:\Test.lnk";
             if (System.IO.File.Exists(shortcutPath))
@@ -161,34 +97,26 @@ namespace WebRunLocal
         }
 
         /// <summary>
-        /// 根据路径删除文件-用于取消自启时从计算机自启目录删除程序的快捷方式
-        /// </summary>
-        /// <param name="path">路径</param>
-        private void deleteFile(string path)
-        {
-            FileAttributes attr = System.IO.File.GetAttributes(path);
-            if (attr == FileAttributes.Directory)
-            {
-                Directory.Delete(path, true);
-            }
-            else
-            {
-                System.IO.File.Delete(path);
-            }
-        }
-
-        /// <summary>
         /// 在桌面上创建快捷方式-如果需要可以调用
         /// </summary>
         /// <param name="desktopPath">桌面地址</param>
         /// <param name="appPath">应用路径</param>
-        public void createDesktopQuick(string desktopPath = "", string quickName = "", string appPath = "")
+        public static void createDesktopQuick()
         {
-            List<string> shortcutPaths = getQuickFromFolder(desktopPath, appPath);
+
+            //桌面目录
+            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+            //获取程序完整路径
+            string appAllPath = Process.GetCurrentProcess().MainModule.FileName;
+            //快捷方式名称
+            string quickName = ConfigurationManager.AppSettings["QuickLnkName"].ToString();
+
+
+            List<string> shortcutPaths = getQuickFromFolder(desktopPath, appAllPath);
             //如果没有则创建
             if (shortcutPaths.Count < 1)
             {
-                createShortcut(desktopPath, quickName, appPath);
+                createShortcut(desktopPath, quickName, appAllPath);
             }
         }
 

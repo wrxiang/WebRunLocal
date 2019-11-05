@@ -33,7 +33,7 @@ namespace WebRunLocal
         //http监听
         private static HttpListener httpListener = new HttpListener();
         //http监听地址
-        private string httpListenerAddress = "http://localhost:ListenerPort/WebRunLocal/";
+        private string httpListenerAddress = "http://127.0.0.1:{0}/WebRunLocal/";
         //是否打印输入输出数据
         private bool pramaterLoggerPrint { get { return bool.Parse(ConfigurationManager.AppSettings["PramaterLoggerPrint"]); } }
 
@@ -48,12 +48,26 @@ namespace WebRunLocal
                 fi.Create();
             }
 
-            httpListenerAddress = httpListenerAddress.Replace("ListenerPort", ConfigurationManager.AppSettings["ListenerPort"]);
+
+            string hostName = Dns.GetHostName();   //获取本机名
+            IPHostEntry localhost = Dns.GetHostByName(hostName);//可以获取IPv4的地址
+            IPAddress localaddrList = localhost.AddressList[0];
+
+            //监听端口
+            string lisenerPort = ConfigurationManager.AppSettings["ListenerPort"].ToString();
+
 
             //设置软件自动启动
-            new AutoStartByLnk().setMeAutoStart(bool.Parse(ConfigurationManager.AppSettings["AutoStart"]));
+            AutoStartByRegistry.setMeStart(bool.Parse(ConfigurationManager.AppSettings["AutoStart"]));
 
-            httpListener.Prefixes.Add(httpListenerAddress);
+            //创建桌面快捷方式
+            if (bool.Parse(ConfigurationManager.AppSettings["DesktopLnk"].ToString()))
+            {
+                LnkUtil.createDesktopQuick();
+            }
+
+
+            httpListener.Prefixes.Add(string.Format(httpListenerAddress, lisenerPort));
             httpListener.Start();
             Thread ThrednHttpPostRequest = new Thread(new ThreadStart(httpRequestHandle));
             ThrednHttpPostRequest.Start();
