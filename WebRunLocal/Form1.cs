@@ -48,10 +48,9 @@ namespace WebRunLocal
                 fi.Create();
             }
 
+            this.Text = ConfigurationManager.AppSettings["QuickLnkName"].ToString();
+            this.mainNotifyIcon.Text = ConfigurationManager.AppSettings["QuickLnkName"].ToString();
 
-            string hostName = Dns.GetHostName();   //获取本机名
-            IPHostEntry localhost = Dns.GetHostByName(hostName);//可以获取IPv4的地址
-            IPAddress localaddrList = localhost.AddressList[0];
 
             //监听端口
             string lisenerPort = ConfigurationManager.AppSettings["ListenerPort"].ToString();

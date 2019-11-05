@@ -35,6 +35,8 @@
             this.toolStripMenuItemMinimize = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemNormal = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemQuit = new System.Windows.Forms.ToolStripMenuItem();
+            this.版本号ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.mainNotifyContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,18 +44,18 @@
             // 
             this.mainNotifyIcon.ContextMenuStrip = this.mainNotifyContextMenuStrip;
             this.mainNotifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("mainNotifyIcon.Icon")));
-            this.mainNotifyIcon.Text = "插件管理";
             this.mainNotifyIcon.Visible = true;
             this.mainNotifyIcon.DoubleClick += new System.EventHandler(this.mainNotifyIcon_MouseDoubleClick);
             // 
             // mainNotifyContextMenuStrip
             // 
             this.mainNotifyContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.版本号ToolStripMenuItem,
             this.toolStripMenuItemMinimize,
             this.toolStripMenuItemNormal,
             this.toolStripMenuItemQuit});
             this.mainNotifyContextMenuStrip.Name = "mainNotifyContextMenuStrip";
-            this.mainNotifyContextMenuStrip.Size = new System.Drawing.Size(124, 76);
+            this.mainNotifyContextMenuStrip.Size = new System.Drawing.Size(124, 100);
             // 
             // toolStripMenuItemMinimize
             // 
@@ -76,6 +78,20 @@
             this.toolStripMenuItemQuit.Text = "退出";
             this.toolStripMenuItemQuit.Click += new System.EventHandler(this.toolStripMenuItemQuit_Click);
             // 
+            // 版本号ToolStripMenuItem
+            // 
+            this.版本号ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem2});
+            this.版本号ToolStripMenuItem.Name = "版本号ToolStripMenuItem";
+            this.版本号ToolStripMenuItem.Size = new System.Drawing.Size(123, 24);
+            this.版本号ToolStripMenuItem.Text = "版本号";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(152, 24);
+            this.toolStripMenuItem2.Text = "0.2.0";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -85,7 +101,6 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "插件管理";
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -101,6 +116,8 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemMinimize;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemNormal;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemQuit;
+        private System.Windows.Forms.ToolStripMenuItem 版本号ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
     }
 }
 
