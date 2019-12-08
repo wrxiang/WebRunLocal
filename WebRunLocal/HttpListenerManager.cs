@@ -21,10 +21,9 @@ namespace WebRunLocal.utils
         private string logFilePath { get { return Path.Combine(Directory.GetCurrentDirectory(), "Log"); } }
         //是否打印输入输出数据
         private bool pramaterLoggerPrint { get { return bool.Parse(ConfigurationManager.AppSettings["PramaterLoggerPrint"]); } }
-        private string listenerIPAddress = "127.0.0.1";
 
         //http实际监听地址
-        private string httpListenerAddress = "http://{0}:{1}/WebRunLocal/";
+        private string httpListenerAddress = "http://+:{0}/WebRunLocal/";
 
         public string HttpListenerAddress
         {
@@ -32,18 +31,12 @@ namespace WebRunLocal.utils
         }
 
 
-
-
-
         /// <summary>
         /// 开启Http监听并处理相关业务
         /// </summary>
         public void startHttpListener(List<string> ipList, string lisenerPort)
         {
-            //先进行ip映射
-            ipAddressMapping(ipList);
-
-            httpListenerAddress = string.Format(httpListenerAddress, listenerIPAddress, lisenerPort);
+            httpListenerAddress = string.Format(httpListenerAddress, lisenerPort);
 
             httpListener.Prefixes.Add(httpListenerAddress);
             httpListener.Start();
@@ -195,77 +188,6 @@ namespace WebRunLocal.utils
             rtnValue["VALUES"] = jarray;
             jobject["RETURN"] = rtnValue;
             return jobject.ToString();
-        }
-
-
-        /// <summary>
-        /// ip地址映射
-        /// </summary>
-        public void ipAddressMapping(List<string> ipList) {
-
-            string hostsPath = Environment.SystemDirectory + "\\drivers\\etc\\hosts";
-            if (!File.Exists(hostsPath))//判断有没有没有新建个
-            {
-                StreamWriter sw = new StreamWriter(hostsPath, false, Encoding.UTF8);
-                sw.WriteLine();
-                
-                foreach (string ip in ipList)
-                {
-                    sw.WriteLine(ip + " " + listenerIPAddress);
-                }
-
-                sw.Close();
-                sw.Dispose();
-                return;
-            }
-            
-            foreach (string ip in ipList)
-            {
-                if (!isExistOfIpMapping(ip, hostsPath)) {
-                    //取消只读
-                    File.SetAttributes(hostsPath, File.GetAttributes(hostsPath) & (~FileAttributes.ReadOnly));
-
-                    System.IO.StreamWriter sw = new System.IO.StreamWriter(hostsPath, true);
-                    sw.WriteLine();
-                    sw.WriteLine(ip + " " + listenerIPAddress);
-                    sw.Close();
-                    sw.Dispose();
-
-                    //设置只读
-                    File.SetAttributes(hostsPath, File.GetAttributes(hostsPath) | FileAttributes.ReadOnly);
-                }
-            }
-            
-        }
-
-        /// <summary>
-        /// 判断IP映射是否存在
-        /// </summary>
-        /// <param name="ip"></param>
-        /// <param name="filePath"></param>
-        /// <returns></returns>
-        private bool isExistOfIpMapping(string ip, string filePath) {
-            System.IO.StreamReader sr = new System.IO.StreamReader(filePath);
-            bool isexist = false;
-            List<bool> isExistList = new List<bool>();
-            while (!sr.EndOfStream)
-            {
-                string ss = sr.ReadLine();
-                if (ss.IndexOf("#") == 0)
-                {
-                    continue;
-                }
-
-                if (ss.Contains(ip) && ss.Contains(listenerIPAddress))
-                {
-                    isexist = true;
-                    break;
-                }
-            }
-            sr.Close();
-            sr.Dispose();
-
-            return isexist;
         }
 
     }

@@ -76,7 +76,7 @@ namespace WebRunLocal
         /// </summary>
         private void setSystemAbout(List<string> ipList, string lisenerPort, string httpAddress) 
         {
-            string SystemAboutText = "IP:";
+            string SystemAboutText = "本机IP:";
             foreach (string ip in ipList)
             {
                 SystemAboutText += ip + Environment.NewLine;
@@ -86,7 +86,7 @@ namespace WebRunLocal
 
             SystemAboutText += Environment.NewLine + "地址: " + httpAddress + Environment.NewLine;
 
-            SystemAboutText += Environment.NewLine + "版本: 0.2.1" +  Environment.NewLine;
+            SystemAboutText += Environment.NewLine + "版本: 0.1.1" +  Environment.NewLine;
 
             SystemAboutLable.Text = SystemAboutText;
         }
