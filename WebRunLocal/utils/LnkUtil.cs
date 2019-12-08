@@ -9,7 +9,7 @@ using System.Text;
 
 namespace WebRunLocal
 {
-    class LnkUtil
+    public class LnkUtil
     {
 
         /// <summary>

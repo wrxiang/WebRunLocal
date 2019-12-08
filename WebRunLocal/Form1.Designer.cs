@@ -35,8 +35,7 @@
             this.toolStripMenuItemMinimize = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemNormal = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemQuit = new System.Windows.Forms.ToolStripMenuItem();
-            this.版本号ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.SystemAboutLable = new System.Windows.Forms.Label();
             this.mainNotifyContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,12 +49,11 @@
             // mainNotifyContextMenuStrip
             // 
             this.mainNotifyContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.版本号ToolStripMenuItem,
             this.toolStripMenuItemMinimize,
             this.toolStripMenuItemNormal,
             this.toolStripMenuItemQuit});
             this.mainNotifyContextMenuStrip.Name = "mainNotifyContextMenuStrip";
-            this.mainNotifyContextMenuStrip.Size = new System.Drawing.Size(124, 100);
+            this.mainNotifyContextMenuStrip.Size = new System.Drawing.Size(124, 76);
             // 
             // toolStripMenuItemMinimize
             // 
@@ -78,34 +76,32 @@
             this.toolStripMenuItemQuit.Text = "退出";
             this.toolStripMenuItemQuit.Click += new System.EventHandler(this.toolStripMenuItemQuit_Click);
             // 
-            // 版本号ToolStripMenuItem
+            // SystemAboutLable
             // 
-            this.版本号ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem2});
-            this.版本号ToolStripMenuItem.Name = "版本号ToolStripMenuItem";
-            this.版本号ToolStripMenuItem.Size = new System.Drawing.Size(123, 24);
-            this.版本号ToolStripMenuItem.Text = "版本号";
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(152, 24);
-            this.toolStripMenuItem2.Text = "0.2.0";
+            this.SystemAboutLable.AutoSize = true;
+            this.SystemAboutLable.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.SystemAboutLable.Location = new System.Drawing.Point(13, 31);
+            this.SystemAboutLable.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.SystemAboutLable.Name = "SystemAboutLable";
+            this.SystemAboutLable.Size = new System.Drawing.Size(67, 25);
+            this.SystemAboutLable.TabIndex = 1;
+            this.SystemAboutLable.Text = "label1";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(392, 209);
+            this.ClientSize = new System.Drawing.Size(353, 305);
+            this.Controls.Add(this.SystemAboutLable);
+            this.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
-            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.mainNotifyContextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -116,8 +112,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemMinimize;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemNormal;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemQuit;
-        private System.Windows.Forms.ToolStripMenuItem 版本号ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.Label SystemAboutLable;
     }
 }
 

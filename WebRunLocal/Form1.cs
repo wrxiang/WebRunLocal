@@ -16,6 +16,7 @@ using System.Windows.Forms;
 using WebRunLocal.dto;
 using WebRunLocal.utils;
 using WebRunLocal.strategy;
+using System.Management;
 
 namespace WebRunLocal
 {
@@ -23,24 +24,19 @@ namespace WebRunLocal
     {
         public Form1()
         {
+
+            this.WindowState = FormWindowState.Minimized;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+
             InitializeComponent();
         }
 
 
-
-        //日志文件路径
-        private string logFilePath { get { return Path.Combine(Directory.GetCurrentDirectory(), "Log"); } }
-        //http监听
-        private static HttpListener httpListener = new HttpListener();
-        //http监听地址
-        private string httpListenerAddress = "http://127.0.0.1:{0}/WebRunLocal/";
-        //是否打印输入输出数据
-        private bool pramaterLoggerPrint { get { return bool.Parse(ConfigurationManager.AppSettings["PramaterLoggerPrint"]); } }
-
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.mainNotifyIcon.Visible = true;
             this.Hide();
+            this.mainNotifyIcon.Visible = true;
 
             DirectoryInfo fi = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), "Plugins"));
             if (!fi.Exists)
@@ -48,12 +44,7 @@ namespace WebRunLocal
                 fi.Create();
             }
 
-            this.Text = ConfigurationManager.AppSettings["QuickLnkName"].ToString();
             this.mainNotifyIcon.Text = ConfigurationManager.AppSettings["QuickLnkName"].ToString();
-
-
-            //监听端口
-            string lisenerPort = ConfigurationManager.AppSettings["ListenerPort"].ToString();
 
 
             //设置软件自动启动
@@ -65,157 +56,42 @@ namespace WebRunLocal
                 LnkUtil.createDesktopQuick();
             }
 
+            //监听端口
+            string lisenerPort = ConfigurationManager.AppSettings["ListenerPort"].ToString();
+            //获取本地电脑IP列表
+            List<string> ipList = IPUtils.GetIpByLocal();
 
-            httpListener.Prefixes.Add(string.Format(httpListenerAddress, lisenerPort));
-            httpListener.Start();
-            Thread ThrednHttpPostRequest = new Thread(new ThreadStart(httpRequestHandle));
-            ThrednHttpPostRequest.Start();
-        }
-
-
-        /// <summary>
-        /// 监听Http请求
-        /// </summary>
-        private void httpRequestHandle()
-        {
-            while (true)
-            {
-                HttpListenerContext context = httpListener.GetContext();
-                Thread threadsub = new Thread(new ParameterizedThreadStart((requestContext) =>
-                {
-                    HttpListenerContext httpListenerContext = (HttpListenerContext)requestContext;
-                    string message = getHttpJsonData(httpListenerContext.Request);
-
-                    if (pramaterLoggerPrint)
-                    {
-                        LoggerManager.writeLog(logFilePath, "服务器:【收到】" + message);
-                    }
-
-                    //JSON字符串反序列化
-                    InputDTO inputDTO = null;
-                    OutputDTO outputDTO = new OutputDTO();
-                    try
-                    {
-                        inputDTO = JsonHelper.Deserialize<InputDTO>(message);
-                    }
-                    catch (Exception e)
-                    {
-                        LoggerManager.writeLog(logFilePath, "【json格式不正确】,异常：" + e.ToString());
-
-                        outputDTO.code = ResultCode.Erroe;
-                        outputDTO.msg = "【json格式不正确】";
-                        outputStreamToClient(httpListenerContext, outputDTO);
-                        return;
-                    }
-                    string serverRootDir = Directory.GetCurrentDirectory();
-                    string localAppPath = Path.Combine(serverRootDir, inputDTO.path);
-
-                    //检查本地程序是否存在
-                    if (!File.Exists(localAppPath))
-                    {
-                        outputDTO.code = ResultCode.Erroe;
-                        outputDTO.msg = "【插件不存在，检查Plugin目录下是否存在】";
-                    }
-                    else 
-                    {
-                        //调用本地程序
-                        QuoteContext quoteContext = new QuoteContext();
-                        try
-                        {
-                            quoteContext.invokeLocalApp(inputDTO, outputDTO, localAppPath);
-                        }
-                        catch (Exception e)
-                        {
-                            outputDTO.code = ResultCode.Erroe;
-                            outputDTO.msg = "【调取插件异常】";
-                            LoggerManager.writeLog(logFilePath, outputDTO.msg + e.ToString());
-                        }
-                        finally
-                        {
-                            Directory.SetCurrentDirectory(serverRootDir);
-                        }
-                    }
-
-                    outputStreamToClient(httpListenerContext, outputDTO);
-                }));
-                threadsub.Start(context);
-            }
-        }
+            //开启http监听并处理业务
+            HttpListenerManager httpListenerManager = new HttpListenerManager();
+            httpListenerManager.startHttpListener(ipList, lisenerPort);
 
 
 
-        /// <summary>
-        /// 获取Http请求入参字符串
-        /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
-        private string getHttpJsonData(HttpListenerRequest request)
-        {
-            Stream jsonData = request.InputStream;
-            StreamReader sRead = new StreamReader(jsonData);
-            string content = sRead.ReadToEnd();
-            sRead.Close();
+            setSystemAbout(ipList, lisenerPort, httpListenerManager.HttpListenerAddress);
 
-            return content;
         }
 
         /// <summary>
-        /// Http向客户端输出返回值
+        /// 设置系统程序展示信息
         /// </summary>
-        /// <param name="httpListenerContext"></param>
-        /// <param name="outputDTO"></param>
-        private void outputStreamToClient(HttpListenerContext httpListenerContext, OutputDTO outputDTO)
+        private void setSystemAbout(List<string> ipList, string lisenerPort, string httpAddress) 
         {
-
-            try
+            string SystemAboutText = "IP:";
+            foreach (string ip in ipList)
             {
-                string rtnMsg = JsonHelper.Serialize<OutputDTO>(outputDTO);
-                if (pramaterLoggerPrint)
-                {
-                    LoggerManager.writeLog(logFilePath, "服务器【返回】" + rtnMsg);
-                }
+                SystemAboutText += ip + Environment.NewLine;
+            }
 
-                httpListenerContext.Response.StatusCode = 200;
-                httpListenerContext.Response.Headers.Add("Access-Control-Allow-Origin", "*");
-                httpListenerContext.Response.ContentType = "application/json";
-                httpListenerContext.Response.ContentEncoding = Encoding.UTF8;
-                byte[] buffer = System.Text.Encoding.UTF8.GetBytes(rtnMsg);
-                httpListenerContext.Response.ContentLength64 = buffer.Length;
-                var output = httpListenerContext.Response.OutputStream;
-                output.Write(buffer, 0, buffer.Length);
-                output.Close();
-            }
-            catch (Exception e)
-            {
-                LoggerManager.writeLog(logFilePath, "【生成出参失败】,异常：" + e.ToString());
-            }
+            SystemAboutText += Environment.NewLine + "端口: " + lisenerPort + Environment.NewLine;
+
+            SystemAboutText += Environment.NewLine + "地址: " + httpAddress + Environment.NewLine;
+
+            SystemAboutText += Environment.NewLine + "版本: 0.2.1" +  Environment.NewLine;
+
+            SystemAboutLable.Text = SystemAboutText;
         }
 
-        /// <summary>
-        /// 构造返回内容
-        /// </summary>
-        /// <param name="retValues"></param>
-        /// <param name="result"></param>
-        /// <returns></returns>
-        private string createRtnMessage(List<object> retValues, object result)
-        {
-            JObject jobject = new JObject();
-            jobject["CODE"] = (int)ResultCode.Success;
-            jobject["MSG"] = string.Empty;
 
-            JObject rtnValue = new JObject();
-            JArray jarray = new JArray();
-            rtnValue["CODE"] = result == null ? string.Empty : result.ToString();
-
-            for (int i = 0; i < retValues.Count; i++)
-            {
-                jarray.Add(retValues[i].ToString());
-            }
-
-            rtnValue["VALUES"] = jarray;
-            jobject["RETURN"] = rtnValue;
-            return jobject.ToString();
-        }
 
         /// <summary>
         /// 窗体的关闭方法，实现关闭后最小化到托盘
