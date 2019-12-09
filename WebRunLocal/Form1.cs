@@ -61,6 +61,9 @@ namespace WebRunLocal
             //获取本地电脑IP列表
             List<string> ipList = IPUtils.GetIpByLocal();
 
+            //将应用程序添加到防火墙例外
+            FireWallHelp.NetFwAddApps("WRL-APP", System.Windows.Forms.Application.ExecutablePath);
+
             //开启http监听并处理业务
             HttpListenerManager httpListenerManager = new HttpListenerManager();
             httpListenerManager.startHttpListener(ipList, lisenerPort);

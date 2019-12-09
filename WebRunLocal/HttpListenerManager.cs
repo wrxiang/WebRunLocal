@@ -23,7 +23,7 @@ namespace WebRunLocal.utils
         private bool pramaterLoggerPrint { get { return bool.Parse(ConfigurationManager.AppSettings["PramaterLoggerPrint"]); } }
 
         //http实际监听地址
-        private string httpListenerAddress = "http://+:{0}/WebRunLocal/";
+        private string httpListenerAddress = "http://+:{0}/WRL/";
 
         public string HttpListenerAddress
         {
