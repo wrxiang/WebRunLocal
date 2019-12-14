@@ -35,22 +35,8 @@ namespace WebRunLocal.utils
             objPort.Scope = NET_FW_SCOPE_.NET_FW_SCOPE_ALL;
             objPort.Enabled = true;
 
-            bool exist = false;
-            //加入到防火墙的管理策略
-            foreach (INetFwOpenPort mPort in netFwMgr.LocalPolicy.CurrentProfile.GloballyOpenPorts)
-            {
-
-                if (objPort == mPort)
-                {
-                    exist = true;
-                    break;
-                }
-            }
-            if (exist)
-            {
-                System.Windows.Forms.MessageBox.Show("exist");
-            }
-            if (!exist) netFwMgr.LocalPolicy.CurrentProfile.GloballyOpenPorts.Add(objPort);
+            //加入到防火墙的管理策略，若已存在会启用该规则
+            netFwMgr.LocalPolicy.CurrentProfile.GloballyOpenPorts.Add(objPort);
         }
 
         /// <summary>
@@ -98,13 +84,24 @@ namespace WebRunLocal.utils
             //加入到防火墙的管理策略
             foreach (INetFwAuthorizedApplication mApp in netFwMgr.LocalPolicy.CurrentProfile.AuthorizedApplications)
             {
-                if (app == mApp)
+                //将同名但是路径不同的策略删除，防止多个程序造成防火墙规则冗余
+                if (app.Name == mApp.Name && app.ProcessImageFileName != mApp.ProcessImageFileName) 
+                {
+                    NetFwDelApps(mApp.ProcessImageFileName);
+                }
+
+
+                if (app.ProcessImageFileName == mApp.ProcessImageFileName)
                 {
                     exist = true;
                     break;
                 }
+
             }
-            if (!exist) netFwMgr.LocalPolicy.CurrentProfile.AuthorizedApplications.Add(app);
+            if (!exist) 
+            {
+                netFwMgr.LocalPolicy.CurrentProfile.AuthorizedApplications.Add(app);
+            } 
         }
         
         /// <summary>

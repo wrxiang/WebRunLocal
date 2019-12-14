@@ -62,7 +62,9 @@ namespace WebRunLocal
             List<string> ipList = IPUtils.GetIpByLocal();
 
             //将应用程序添加到防火墙例外
-            FireWallHelp.NetFwAddApps("WRL-APP", System.Windows.Forms.Application.ExecutablePath);
+            //FireWallHelp.NetFwAddApps("WRL-APP", System.Windows.Forms.Application.ExecutablePath);
+            //添加防火墙例外端口
+            FireWallHelp.NetFwAddPorts("WRL-PORT", int.Parse(lisenerPort), "TCP");
 
             //开启http监听并处理业务
             HttpListenerManager httpListenerManager = new HttpListenerManager();

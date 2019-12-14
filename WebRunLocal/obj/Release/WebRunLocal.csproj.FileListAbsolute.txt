@@ -10,3 +10,4 @@ E:\MySpace\GitHub\WebRunLocal\WebRunLocal\obj\Release\WebRunLocal.Properties.Res
 E:\MySpace\GitHub\WebRunLocal\WebRunLocal\obj\Release\WebRunLocal.csproj.GenerateResource.Cache
 E:\MySpace\GitHub\WebRunLocal\WebRunLocal\obj\Release\WRL.exe
 E:\MySpace\GitHub\WebRunLocal\WebRunLocal\obj\Release\WRL.pdb
+E:\MySpace\GitHub\WebRunLocal\WebRunLocal\obj\Release\WebRunLocal.csprojResolveAssemblyReference.cache
