@@ -43,6 +43,19 @@ namespace WebRunLocal.Forms
             this.ChkLogger.Checked = pramaterLoggerPrint;
         }
 
+        /// <summary>
+        /// 控制监听端口文本框只能输入数字和删除键
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnTxtPortKeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 1)
+            {
+                e.Handled = true;
+            }
+        }
+
 
         /// <summary>
         /// 设置是否开机自启动时触发
@@ -92,11 +105,11 @@ namespace WebRunLocal.Forms
         {
             if (this.TxtPort.Text != this.originalPort)
             {
-                updateAppConfig("ListenerPort", this.TxtPort.Text);
                 MessageBoxButtons mess = MessageBoxButtons.OKCancel;
-                DialogResult dr = MessageBox.Show("监听端口发生更改需要重启本程序，是否立即重新启动？", "提示", mess);
+                DialogResult dr = MessageBox.Show("监听端口发生更改需要重启本程序，是否立即更改并重新启动？", "提示", mess);
                 if (dr == DialogResult.OK)
                 {
+                    updateAppConfig("ListenerPort", this.TxtPort.Text);
                     this.Dispose();
                     System.Diagnostics.Process.Start(Application.ExecutablePath);
                     Application.Exit();
@@ -121,6 +134,8 @@ namespace WebRunLocal.Forms
             config.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection("appSettings");
         }
+
+        
 
         
 

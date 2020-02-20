@@ -122,8 +122,10 @@
             this.TxtPort.Font = new System.Drawing.Font("微软雅黑", 10.8F);
             this.TxtPort.Location = new System.Drawing.Point(177, 36);
             this.TxtPort.Name = "TxtPort";
+            this.TxtPort.ShortcutsEnabled = false;
             this.TxtPort.Size = new System.Drawing.Size(100, 31);
             this.TxtPort.TabIndex = 1;
+            this.TxtPort.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnTxtPortKeyPress);
             // 
             // label1
             // 
