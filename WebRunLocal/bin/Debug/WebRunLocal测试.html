@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>WebRunLocal测试</title>    
+	<script language="javascript" type="text/javascript">		    
+	function test()
+	{				
+		var resultDom = document.getElementById("result");
+		var paramsData =  document.getElementById("params").value;
+		var xhr = new XMLHttpRequest();
+		
+		xhr.open('post', 'http://127.0.0.1:8090/WRL/' );
+		xhr.setRequestHeader("Content-type","application/json");
+		xhr.send(paramsData);
+		
+		xhr.onreadystatechange = function () {
+		    // 这步为判断服务器是否正确响应
+			if (xhr.readyState == 4 && xhr.status == 200) {
+				resultDom.append(xhr.responseText + "\n");
+			} 
+		};
+	}
+</script>
+</head>
+
+<body>
+
+<textarea id="params" rows="20" cols="50"></textarea>
+<button type="button" onclick="test()">测试</button><br/>
+<span>结果：</span><br/>
+<div>
+	<pre id="result"></pre>
+</div>
+</body>
+</html>
