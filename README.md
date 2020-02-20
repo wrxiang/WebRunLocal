@@ -57,9 +57,21 @@ WebRunLocal测试.html：测试用网页
 ```
 #### 5.3 调用Exe可执行程序
 在浏览器中打开"WebRunLocal测试.html"进行测试，在文本框中输入如下内容
-{"TYPE": "2","PATH": "Plugins\\CallExe\\CallExe.exe"}
-点击“发送消息”按钮，完成对测试用程序CallExe.exe的启动测试，软件启动成功会在主界面打印出入参。
-{"TYPE": "2","PATH": "Plugins\\CallExe\\CallExe.exe","PARAM": [{"VALUE": "1111"},{"VALUE": "222"},{"VALUE": "333"}]}
+```
+{
+	"TYPE": "2",
+	"PATH": "Plugins\\CallExe\\CallExe.exe",
+	"PARAM": [{
+		"VALUE": "1111"
+	}, {
+		"VALUE": "222"
+	}, {
+		"VALUE": "333"
+	}]
+}
+```
+点击“测试”按钮，完成对测试用程序CallExe.exe的启动测试，软件启动成功会在主界面打印出入参拼接的字符串。
+
 
 #### 5.4 调用DLL插件
 WebRunLocal服务调用DLL采用了C#的动态编译功能，使用者不需要对本地程序进行二次封装，直接将本地程序放入Plugins目录即可使用，使用者根据DLL插件对外提供的方法设置不同的入参参数。测试用DLL插件CallDLL.dll模拟了经常使用的DLL封装方法的况用以测试，DLL插件接口方法定义如下：
@@ -73,7 +85,7 @@ extern "C" __declspec(dllexport) int CallString(char* output);
 //方法返回值为1，input为输入参数，output为输出参数
 extern "C" __declspec(dllexport) int CallStringInAndOut(char* input, char* output);
 ```
-在浏览器中打开"WebRunLocal测试.html"，在文本框中分别输入以下内容，点击“发送消息”按钮，完成对测试用插件CallDLL.dll的调用测试。
+在浏览器中打开"WebRunLocal测试.html"，在文本框中分别输入以下内容，点击“测试”按钮，完成对测试用插件CallDLL.dll的调用测试。
 1、 add方法测试入参及出参：
 
 ```
@@ -144,7 +156,6 @@ extern "C" __declspec(dllexport) int CallStringInAndOut(char* input, char* outpu
 ListenerPort：设置http监听端口<br/>
 AutoStart：程序是否开机自启动<br/>
 DesktopLnk：是否创建桌面快捷方式<br/>
-QuickLnkName：桌面快捷方式名称<br/>
 PramaterLoggerPrint：是否将系统服务的入参出参输出到日志文件
 
 
