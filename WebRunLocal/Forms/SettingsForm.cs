@@ -116,6 +116,7 @@ namespace WebRunLocal.Forms
                 }
                 else 
                 {
+                    this.TxtPort.Text = this.originalPort;
                     e.Cancel = true;
                 }
             }
