@@ -1,0 +1,13 @@
+E:\MySpace\GitHub\WebRunLocal\AutoUpdate\obj\Debug\AutoUpdate.Form1.resources
+E:\MySpace\GitHub\WebRunLocal\AutoUpdate\obj\Debug\AutoUpdate.Properties.Resources.resources
+E:\MySpace\GitHub\WebRunLocal\AutoUpdate\obj\Debug\AutoUpdate.csproj.GenerateResource.cache
+E:\MySpace\GitHub\WebRunLocal\AutoUpdate\obj\Debug\AutoUpdate.csproj.CoreCompileInputs.cache
+E:\MySpace\GitHub\WebRunLocal\AutoUpdate\obj\Debug\AutoUpdate.csproj.CopyComplete
+E:\MySpace\GitHub\WebRunLocal\AutoUpdate\bin\Debug\SuperSocket.ClientEngine.dll
+E:\MySpace\GitHub\WebRunLocal\AutoUpdate\bin\Debug\WebSocket4Net.dll
+E:\MySpace\GitHub\WebRunLocal\AutoUpdate\bin\Debug\SharpCompress.dll
+E:\MySpace\GitHub\WebRunLocal\AutoUpdate\bin\Debug\WRL自动更新.exe.config
+E:\MySpace\GitHub\WebRunLocal\AutoUpdate\bin\Debug\WRL自动更新.exe
+E:\MySpace\GitHub\WebRunLocal\AutoUpdate\bin\Debug\WRL自动更新.pdb
+E:\MySpace\GitHub\WebRunLocal\AutoUpdate\obj\Debug\WRL自动更新.exe
+E:\MySpace\GitHub\WebRunLocal\AutoUpdate\obj\Debug\WRL自动更新.pdb

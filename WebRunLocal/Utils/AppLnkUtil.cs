@@ -54,7 +54,7 @@ namespace WebRunLocal.Utils
         {
             List<string> tempStrs = new List<string>();
             tempStrs.Clear();
-            string tempStr = null;
+            string tempStr;
             string[] files = Directory.GetFiles(directory, "*.lnk");
             if (files == null || files.Length < 1)
             {

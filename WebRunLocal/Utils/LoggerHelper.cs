@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace WebRunLocal.Utils
 {
-
     public class LoggerHelper
     {
         /// <summary>
@@ -42,6 +42,5 @@ namespace WebRunLocal.Utils
                 logError.Error(info, ex);
             }
         }
-
     }
 }

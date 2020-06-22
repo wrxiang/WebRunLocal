@@ -1,7 +1,9 @@
-﻿using NetFwTypeLib;
+﻿using Microsoft.Win32;
+using NetFwTypeLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceProcess;
 using System.Text;
 
 namespace WebRunLocal.Utils
@@ -14,29 +16,37 @@ namespace WebRunLocal.Utils
         /// <param name="name">名称</param>
         /// <param name="port">端口</param>
         /// <param name="protocol">协议(TCP、UDP)</param>
-        public static void NetFwAddPorts(string name, int port, string protocol)
+        public static void NetFwAddPorts(string name, int port, NET_FW_IP_PROTOCOL_ protocol)
         {
-            //创建firewall管理类的实例
-            INetFwMgr netFwMgr = (INetFwMgr)Activator.CreateInstance(Type.GetTypeFromProgID("HNetCfg.FwMgr"));
-
-            INetFwOpenPort objPort = (INetFwOpenPort)Activator.CreateInstance(
-                Type.GetTypeFromProgID("HNetCfg.FwOpenPort"));
-
-            objPort.Name = name;
-            objPort.Port = port;
-            if (protocol.ToUpper() == "TCP")
+            var serviceControllers = ServiceController.GetServices();
+            string fireWallServiceName;
+            Version currentVersion = Environment.OSVersion.Version;
+            if (currentVersion.Major == 5)
             {
-                objPort.Protocol = NET_FW_IP_PROTOCOL_.NET_FW_IP_PROTOCOL_TCP;
+                fireWallServiceName = "sharedaccess";
             }
-            else
+            else 
             {
-                objPort.Protocol = NET_FW_IP_PROTOCOL_.NET_FW_IP_PROTOCOL_UDP;
+                fireWallServiceName = "mpssvc";
             }
-            objPort.Scope = NET_FW_SCOPE_.NET_FW_SCOPE_ALL;
-            objPort.Enabled = true;
 
-            //加入到防火墙的管理策略，若已存在会启用该规则
-            netFwMgr.LocalPolicy.CurrentProfile.GloballyOpenPorts.Add(objPort);
+            var server = serviceControllers.FirstOrDefault(service => service.ServiceName.ToLower() == fireWallServiceName);
+            if (server != null && server.Status == ServiceControllerStatus.Running) {
+                //创建firewall管理类的实例
+                INetFwMgr netFwMgr = (INetFwMgr)Activator.CreateInstance(Type.GetTypeFromProgID("HNetCfg.FwMgr"));
+
+                INetFwOpenPort objPort = (INetFwOpenPort)Activator.CreateInstance(
+                    Type.GetTypeFromProgID("HNetCfg.FwOpenPort"));
+
+                objPort.Name = name;
+                objPort.Port = port;
+                objPort.Protocol = protocol;
+                objPort.Scope = NET_FW_SCOPE_.NET_FW_SCOPE_ALL;
+                objPort.Enabled = true;
+
+                //加入到防火墙的管理策略，若已存在会启用该规则
+                netFwMgr.LocalPolicy.CurrentProfile.GloballyOpenPorts.Add(objPort);
+            }
         }
 
         /// <summary>
@@ -44,17 +54,10 @@ namespace WebRunLocal.Utils
         /// </summary>
         /// <param name="port">端口</param>
         /// <param name="protocol">协议（TCP、UDP）</param>
-        public static void NetFwDelPorts(int port, string protocol)
+        public static void NetFwDelPorts(int port, NET_FW_IP_PROTOCOL_ protocol)
         {
             INetFwMgr netFwMgr = (INetFwMgr)Activator.CreateInstance(Type.GetTypeFromProgID("HNetCfg.FwMgr"));
-            if (protocol == "TCP")
-            {
-                netFwMgr.LocalPolicy.CurrentProfile.GloballyOpenPorts.Remove(port, NET_FW_IP_PROTOCOL_.NET_FW_IP_PROTOCOL_TCP);
-            }
-            else
-            {
-                netFwMgr.LocalPolicy.CurrentProfile.GloballyOpenPorts.Remove(port, NET_FW_IP_PROTOCOL_.NET_FW_IP_PROTOCOL_UDP);
-            }
+            netFwMgr.LocalPolicy.CurrentProfile.GloballyOpenPorts.Remove(port, protocol);
         }
 
 

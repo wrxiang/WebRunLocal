@@ -23,127 +23,139 @@
         #region Windows 窗体设计器生成的代码
 
         /// <summary>
-        /// 设计器支持所需的方法 - 不要
+        /// 设计器支持所需的方法 - 不要修改
         /// 使用代码编辑器修改此方法的内容。
         /// </summary>
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.FoldPanelGroup = new System.Windows.Forms.Panel();
+            this.FoldPanel = new System.Windows.Forms.Panel();
+            this.buttonAbout = new System.Windows.Forms.Button();
+            this.buttonSetting = new System.Windows.Forms.Button();
             this.IcnTray = new System.Windows.Forms.NotifyIcon(this.components);
             this.CmsMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.TsmiRestore = new System.Windows.Forms.ToolStripMenuItem();
             this.TsmiSetting = new System.Windows.Forms.ToolStripMenuItem();
-            this.TsmiAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.TsmiLogout = new System.Windows.Forms.ToolStripMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.linkLabel = new System.Windows.Forms.LinkLabel();
+            this.FoldPanelGroup.SuspendLayout();
             this.CmsMenu.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // FoldPanelGroup
+            // 
+            this.FoldPanelGroup.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.FoldPanelGroup.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.FoldPanelGroup.Controls.Add(this.FoldPanel);
+            this.FoldPanelGroup.Controls.Add(this.buttonAbout);
+            this.FoldPanelGroup.Controls.Add(this.buttonSetting);
+            this.FoldPanelGroup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FoldPanelGroup.Location = new System.Drawing.Point(0, 0);
+            this.FoldPanelGroup.Name = "FoldPanelGroup";
+            this.FoldPanelGroup.Size = new System.Drawing.Size(376, 776);
+            this.FoldPanelGroup.TabIndex = 1;
+            // 
+            // FoldPanel
+            // 
+            this.FoldPanel.BackColor = System.Drawing.SystemColors.Window;
+            this.FoldPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FoldPanel.Location = new System.Drawing.Point(0, 39);
+            this.FoldPanel.Name = "FoldPanel";
+            this.FoldPanel.Size = new System.Drawing.Size(372, 694);
+            this.FoldPanel.TabIndex = 4;
+            // 
+            // buttonAbout
+            // 
+            this.buttonAbout.BackColor = System.Drawing.Color.White;
+            this.buttonAbout.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.buttonAbout.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonAbout.Location = new System.Drawing.Point(0, 733);
+            this.buttonAbout.Name = "buttonAbout";
+            this.buttonAbout.Size = new System.Drawing.Size(372, 39);
+            this.buttonAbout.TabIndex = 2;
+            this.buttonAbout.Text = "关于";
+            this.buttonAbout.UseVisualStyleBackColor = false;
+            this.buttonAbout.Click += new System.EventHandler(this.FoldButtonClick);
+            // 
+            // buttonSetting
+            // 
+            this.buttonSetting.BackColor = System.Drawing.Color.White;
+            this.buttonSetting.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonSetting.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonSetting.Location = new System.Drawing.Point(0, 0);
+            this.buttonSetting.Name = "buttonSetting";
+            this.buttonSetting.Size = new System.Drawing.Size(372, 39);
+            this.buttonSetting.TabIndex = 1;
+            this.buttonSetting.Text = "设置";
+            this.buttonSetting.UseVisualStyleBackColor = false;
+            this.buttonSetting.Click += new System.EventHandler(this.FoldButtonClick);
             // 
             // IcnTray
             // 
             this.IcnTray.ContextMenuStrip = this.CmsMenu;
-            this.IcnTray.DoubleClick += new System.EventHandler(this.OnIcnTrayDBClick);
+            this.IcnTray.DoubleClick += new System.EventHandler(this.IcnTray_DoubleClick);
             // 
             // CmsMenu
             // 
+            this.CmsMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.CmsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TsmiRestore,
             this.TsmiSetting,
-            this.TsmiAbout,
             this.TsmiLogout});
             this.CmsMenu.Name = "cmsMenu";
-            this.CmsMenu.Size = new System.Drawing.Size(109, 100);
+            this.CmsMenu.Size = new System.Drawing.Size(109, 76);
             // 
             // TsmiRestore
             // 
             this.TsmiRestore.Name = "TsmiRestore";
             this.TsmiRestore.Size = new System.Drawing.Size(108, 24);
             this.TsmiRestore.Text = "还原";
-            this.TsmiRestore.Click += new System.EventHandler(this.OnTsmiRestoreClick);
+            this.TsmiRestore.Click += new System.EventHandler(this.TsmiRestore_Click);
             // 
             // TsmiSetting
             // 
             this.TsmiSetting.Name = "TsmiSetting";
             this.TsmiSetting.Size = new System.Drawing.Size(108, 24);
             this.TsmiSetting.Text = "设置";
-            this.TsmiSetting.Click += new System.EventHandler(this.OnTsmiSettingClick);
-            // 
-            // TsmiAbout
-            // 
-            this.TsmiAbout.Name = "TsmiAbout";
-            this.TsmiAbout.Size = new System.Drawing.Size(108, 24);
-            this.TsmiAbout.Text = "关于";
-            this.TsmiAbout.Click += new System.EventHandler(this.OnTsmiAboutClick);
+            this.TsmiSetting.Click += new System.EventHandler(this.TsmiSetting_Click);
             // 
             // TsmiLogout
             // 
             this.TsmiLogout.Name = "TsmiLogout";
             this.TsmiLogout.Size = new System.Drawing.Size(108, 24);
             this.TsmiLogout.Text = "退出";
-            this.TsmiLogout.Click += new System.EventHandler(this.OnTsmiLogoutClick);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("黑体", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(22, 30);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(142, 24);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "WebRunLocal";
-            // 
-            // label2
-            // 
-            this.label2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(21, 74);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(413, 91);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "网页调用本地程序，低耦合，兼容性强，全版本浏览器兼容，彻底解决网页调用本地程序出现的各种问题";
-            // 
-            // linkLabel
-            // 
-            this.linkLabel.AutoSize = true;
-            this.linkLabel.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.linkLabel.Location = new System.Drawing.Point(21, 175);
-            this.linkLabel.Name = "linkLabel";
-            this.linkLabel.Size = new System.Drawing.Size(92, 27);
-            this.linkLabel.TabIndex = 3;
-            this.linkLabel.TabStop = true;
-            this.linkLabel.Text = "软件详情";
-            this.linkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.OnLinkClicked);
+            this.TsmiLogout.Click += new System.EventHandler(this.TsmiLogout_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(460, 229);
-            this.Controls.Add(this.linkLabel);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.BackColor = System.Drawing.SystemColors.Window;
+            this.ClientSize = new System.Drawing.Size(376, 776);
+            this.Controls.Add(this.FoldPanelGroup);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "MainForm";
             this.Text = "WRL";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OnMainFormClosing);
-            this.Load += new System.EventHandler(this.OnMainFormLoad);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.FoldPanelGroup.ResumeLayout(false);
             this.CmsMenu.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
+        private System.Windows.Forms.Panel FoldPanelGroup;
+        private System.Windows.Forms.Button buttonAbout;
+        private System.Windows.Forms.Panel FoldPanel;
+        private System.Windows.Forms.Button buttonSetting;
         private System.Windows.Forms.NotifyIcon IcnTray;
         private System.Windows.Forms.ContextMenuStrip CmsMenu;
-        private System.Windows.Forms.ToolStripMenuItem TsmiAbout;
-        private System.Windows.Forms.ToolStripMenuItem TsmiLogout;
-        private System.Windows.Forms.ToolStripMenuItem TsmiSetting;
         private System.Windows.Forms.ToolStripMenuItem TsmiRestore;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.LinkLabel linkLabel;
+        private System.Windows.Forms.ToolStripMenuItem TsmiSetting;
+        private System.Windows.Forms.ToolStripMenuItem TsmiLogout;
     }
 }
 
