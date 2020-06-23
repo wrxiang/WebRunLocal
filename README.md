@@ -48,7 +48,7 @@ DesktopLnk：是否创建桌面快捷方式<br />
 RetainLogDays：日志保留天数<br />
 PramaterLoggerPrint：是否将系统服务的入参出参输出到日志文件<br />
 
-WRL自动更新.exe.config为自动更新程序的配置文件，配置内容如下：
+WRL自动更新.exe.config为自动更新程序的配置文件，配置内容如下：<br />
 WebSocketServiceAddr：服务器WebSocket服务地址<br />
 UpdateFileUri：更新文件下载地址
 
