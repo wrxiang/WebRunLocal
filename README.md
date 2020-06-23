@@ -1,4 +1,8 @@
 ## WebRunLocal
+
+此分支已不再维护，调用DLL入参或出参过长，动态编译会报错，而且所有的接口使用统一的URL，不利于维护和持续集成。
+新版程序采用WebAPI的方式实现，详情参考master分支
+
 ### 1. 程序说明
 WebRunLocal旨在实现网页(Web Page)和本地程序(Local App)之间的动态调用，WebRunLocal作为Windows本地托盘程序在客户端电脑运行，网页中使用JavaScript通过http的方式WebRunLocal服务，WebRunLocal服务根据传入的参数，动态的调用本地程序并返回结果，参数格式使用JSON，方便在网页中进行解析。
 
