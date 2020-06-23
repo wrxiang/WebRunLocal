@@ -41,15 +41,15 @@ WRL程序提供的http服务采用WebAPI方式实现，每个不同的第三方�
 
 #### 5.3 配置说明
 软件包根目录下的WRL.exe.config为WebRunLocal服务的配置文件，通过它可以对本地系统服务进行一些配置，配置内容如下：
-ListenerPort：设置http监听端口
-AutoStart：程序是否开机自启动
-AutoUpdate：是否自动更新
-DesktopLnk：是否创建桌面快捷方式
-RetainLogDays：日志保留天数
-PramaterLoggerPrint：是否将系统服务的入参出参输出到日志文件
+ListenerPort：设置http监听端口<br />
+AutoStart：程序是否开机自启动<br />
+AutoUpdate：是否自动更新<br />
+DesktopLnk：是否创建桌面快捷方式<br />
+RetainLogDays：日志保留天数<br />
+PramaterLoggerPrint：是否将系统服务的入参出参输出到日志文件<br />
 
 WRL自动更新.exe.config为自动更新程序的配置文件，配置内容如下：
-WebSocketServiceAddr：服务器WebSocket服务地址
+WebSocketServiceAddr：服务器WebSocket服务地址<br />
 UpdateFileUri：更新文件下载地址
 
 
