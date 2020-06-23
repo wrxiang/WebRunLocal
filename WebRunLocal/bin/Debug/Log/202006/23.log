@@ -1,0 +1,11 @@
+
+日志时间：2020-06-23 09:42:06,199 [3] 
+日志级别：INFO  
+Hello.GetEcho
+入参:{"name":"XXX"} 
+ 
+日志时间：2020-06-23 09:42:06,269 [3] 
+日志级别：INFO  
+Hello.GetEcho
+出参:{"Name":"XXX","Message":"Hello, XXX"} 
+ 
