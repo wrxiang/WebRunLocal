@@ -1,6 +1,6 @@
 ﻿using AutoUpdateClient.Utils;
-using SharpCompress.Archive;
-using SharpCompress.Common;
+using SharpCompress.Archives;
+using SharpCompress.Readers;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -72,17 +72,20 @@ namespace AutoUpdateClient.Managers
         public void UnPackageFile(string targetFile, string zipFile) 
         {
             var archive = ArchiveFactory.Open(targetFile);
+            ExtractionOptions extractionOptions = new ExtractionOptions();
+            extractionOptions.ExtractFullPath = true;
+            extractionOptions.Overwrite = true;
+
             foreach (var entry in archive.Entries)
             {
                 if (!entry.IsDirectory)
                 {
-                    entry.WriteToDirectory(zipFile, ExtractOptions.ExtractFullPath | ExtractOptions.Overwrite);
+                    entry.WriteToDirectory(zipFile, extractionOptions);
                 }
             }
-            archive.Dispose();
         }
 
-        /// <summary>
+        /// <summary> 
         /// 启动程序
         /// </summary>
         /// <param name="exePath"></param>
